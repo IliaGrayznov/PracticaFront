@@ -1,0 +1,30 @@
+<div class="container">
+    <header class="jumbotron">
+      <p>My requests:</p>
+    </header>
+  </div>
+  
+  <table class="table table-striped">
+    <thead  class="table-dark">
+      <tr>
+        <th>date</th>
+        <th>master</th>
+        <th>car</th>
+        <th>status</th>
+        <th>services</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.date }}</td>
+        <td *ngIf="request.master">{{ request.master.username }}</td>
+        <td *ngIf="!request.master">-----</td>
+        <td>{{ request.car.mark }}   {{ request.car.model }}</td>
+        <td>{{ request.status.name }}</td>
+        <td><a>to do link to services</a></td>
+      </tr>
+    </tbody>
+  
+  <div>
+    <a class="btn btn-primary" role="button"  routerLink="/createRequest" >Create request </a>
+  </div>

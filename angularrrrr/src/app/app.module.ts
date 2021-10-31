@@ -15,6 +15,9 @@ import { BoardMasterComponent } from './board-master/board-master.component';
 import { BoardClientComponent } from './board-client/board-client.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { RegisterMasterComponent } from './register-master/register-master.component';
+import { CarRegisterComponent } from './car-register/car-register.component';
+import { RequestClientComponent } from './request-client/request-client.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardMasterComponent,
-    BoardClientComponent
+    BoardClientComponent,
+    RegisterMasterComponent,
+    CarRegisterComponent,
+    RequestClientComponent
   ],
   imports: [
     BrowserModule,

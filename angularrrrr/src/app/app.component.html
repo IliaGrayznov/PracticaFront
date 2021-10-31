@@ -1,6 +1,6 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a href="#" class="navbar-brand">bezKoder</a>
+    <a href="#" class="navbar-brand">HappyLiitleAutoService</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
@@ -11,8 +11,11 @@
       <li class="nav-item" *ngIf="showMasterBoard">
         <a href="/master" class="nav-link" routerLink="master">Master Board</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="showClientBoard">
         <a href="/client" class="nav-link" *ngIf="isLoggedIn" routerLink="client">Client</a>
+      </li>
+      <li class="nav-item" *ngIf="showClientBoard">
+        <a href="/requests" class="nav-link" *ngIf="isLoggedIn" routerLink="requests">My requests</a>
       </li>
     </ul>
 

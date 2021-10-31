@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 const API_URL = 'http://localhost:8080/api/test/';
 
+const API_URL_SERVICE = 'http://localhost:8080/api/service/';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
+    return this.http.get(API_URL_SERVICE + 'all', { responseType: 'json' });
   }
 
   getClientBoard(): Observable<any> {

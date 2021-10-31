@@ -28,4 +28,11 @@ export class AuthService {
       password: user.password
     }, httpOptions);
   }
+
+  registerMaster(user): Observable<any> {
+    return this.http.post(AUTH_API + 'Msignup', {
+      username: user.username,
+      password: user.password
+    }, httpOptions);
+  }
 }

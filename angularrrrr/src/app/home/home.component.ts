@@ -10,12 +10,15 @@ export class HomeComponent implements OnInit {
 
   content: string;
 
+  services:any;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe(
       data => {
-        this.content = data;
+        this.services = data.services;
+        console.log(data)
       },
       err => {
         this.content = JSON.parse(err.error).message;
