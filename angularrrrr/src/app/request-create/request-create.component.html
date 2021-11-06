@@ -1,0 +1,59 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="car_id">Car</label>
+          <select name="car_id" required class="form-control">           
+            <option  [(ngModel)]="form.car_id" #car_id="ngModel" *ngFor="let car of cars" [ngValue]="car.id">{{car.mark}}  {{car.model}}   {{car.id}}</option>
+          </select>
+          <div class="alert-danger" *ngIf="f.submitted && number.invalid">
+            <div *ngIf="number.errors.required">Car is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="idS1">Service</label>
+          <select name="idS1" required class="form-control">
+            <option  [(ngModel)]="form.idS1" #idS1="ngModel" *ngFor="let service of services" [ngValue]="service.id">{{service.name}}</option>
+          </select>
+          <div class="alert-danger" *ngIf="f.submitted && mark.invalid">
+            <div *ngIf="mark.errors.required">At least 1 serivce is required</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="idS2">Service</label>
+            <select name="idS2" class="form-control" >
+              <option [(ngModel)]="form.idS2" #idS2="ngModel" [ngValue]="0" >none</option>
+              <option [(ngModel)]="form.idS2" #idS2="ngModel" *ngFor="let service of services" [ngValue]="service.id">{{service.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="idS3">Service</label>
+            <select name="idS3" class="form-control">
+              <option [(ngModel)]="form.idS3" #idS3="ngModel" [ngValue]="0" >none</option>
+              <option  [(ngModel)]="form.idS3" #idS3="ngModel" *ngFor="let service of services" [ngValue]="service.id">{{service.name}}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Create request</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Request registration is successful!
+      </div>
+    </div>
+  </div>

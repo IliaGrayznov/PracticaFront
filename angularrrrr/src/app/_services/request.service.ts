@@ -19,7 +19,9 @@ export class RequestService {
     return this.http.post(REQUEST_API + 'create', {
       car_id: request.car_id,
       date: request.date,
-      services: request.services
+      idS1: request.idS1,
+      idS2: request.idS2,
+      idS3: request.idS3
     }, httpOptions);
   }
 

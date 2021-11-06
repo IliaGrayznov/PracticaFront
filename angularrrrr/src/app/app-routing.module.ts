@@ -11,6 +11,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { RegisterMasterComponent } from './register-master/register-master.component';
 import { CarRegisterComponent } from './car-register/car-register.component';
 import { RequestClientComponent } from './request-client/request-client.component';
+import { RequestCreateComponent } from './request-create/request-create.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'requests', component: RequestClientComponent },
   { path: 'master', component: BoardMasterComponent },
   { path: 'admin', component: BoardAdminComponent },
+  { path: 'createRequest', component: RequestCreateComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
