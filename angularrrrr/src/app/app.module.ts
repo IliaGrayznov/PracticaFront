@@ -19,6 +19,7 @@ import { RegisterMasterComponent } from './register-master/register-master.compo
 import { CarRegisterComponent } from './car-register/car-register.component';
 import { RequestClientComponent } from './request-client/request-client.component';
 import { RequestCreateComponent } from './request-create/request-create.component';
+import { RequestMasterComponent } from './request-master/request-master.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RequestCreateComponent } from './request-create/request-create.componen
     RegisterMasterComponent,
     CarRegisterComponent,
     RequestClientComponent,
-    RequestCreateComponent
+    RequestCreateComponent,
+    RequestMasterComponent
   ],
   imports: [
     BrowserModule,

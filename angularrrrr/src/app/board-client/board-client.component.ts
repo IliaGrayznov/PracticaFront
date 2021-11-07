@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 import { CarService } from '../_services/car.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class BoardClientComponent implements OnInit {
 
   content: string
 
-  constructor(private userService: UserService, private carService: CarService, ) { }
+  constructor(private carService: CarService, ) { }
 
   ngOnInit(): void {
     this.carService.getUserCars().subscribe(

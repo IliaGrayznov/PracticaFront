@@ -11,6 +11,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { RegisterMasterComponent } from './register-master/register-master.component';
 import { CarRegisterComponent } from './car-register/car-register.component';
 import { RequestClientComponent } from './request-client/request-client.component';
+import { RequestMasterComponent } from './request-master/request-master.component';
 import { RequestCreateComponent } from './request-create/request-create.component';
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'client', component: BoardClientComponent },
   { path: 'requests', component: RequestClientComponent },
+  { path: 'masterRequests', component: RequestMasterComponent },
   { path: 'master', component: BoardMasterComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'createRequest', component: RequestCreateComponent },

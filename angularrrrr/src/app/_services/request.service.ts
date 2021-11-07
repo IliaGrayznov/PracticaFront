@@ -25,11 +25,22 @@ export class RequestService {
     }, httpOptions);
   }
 
+  asseptRequest(f): Observable<any> {
+    return this.http.post(REQUEST_API + 'acceptRequest', {
+      id: f.id_r
+    }, httpOptions);
+  }
+
+
   getUserRequests(): Observable<any> {
     return this.http.get(REQUEST_API + 'userS', { responseType: 'json' });
   }
 
   getMasterRequests(): Observable<any> {
     return this.http.get(REQUEST_API + 'mastersS', { responseType: 'json' });
+  }
+
+  getRequestsForAssept(): Observable<any> {
+    return this.http.get(REQUEST_API + 'requestByStatus/2', {responseType: 'json' });
   }
 }

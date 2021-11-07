@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { RequestService } from '../_services/request.service';
 
 @Component({
   selector: 'app-board-master',
@@ -8,17 +8,29 @@ import { UserService } from '../_services/user.service';
 })
 export class BoardMasterComponent implements OnInit {
 
+  requests: any;
+  
   content: string;
 
-  constructor(private userService: UserService) { }
+  form: any = {};
+
+  constructor(private requestService: RequestService) { }
 
   ngOnInit(): void {
-    this.userService.getMasterBoard().subscribe(
+    this.requestService.getRequestsForAssept().subscribe(
       data => {
-        this.content = data;
+        this.requests = data;
       },
       err => {
         this.content = JSON.parse(err.error).message;
+      }
+    );
+  }
+
+  onSubmit(): void{
+    this.requestService.asseptRequest(this).subscribe(
+      data => {
+        console.log(data);
       }
     );
   }
