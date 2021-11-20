@@ -13,6 +13,7 @@ import { CarRegisterComponent } from './car-register/car-register.component';
 import { RequestClientComponent } from './request-client/request-client.component';
 import { RequestMasterComponent } from './request-master/request-master.component';
 import { RequestCreateComponent } from './request-create/request-create.component';
+import { CreateServiceComponent } from './create-service/create-service.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'master', component: BoardMasterComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'createRequest', component: RequestCreateComponent },
+  { path: 'createService', component: CreateServiceComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

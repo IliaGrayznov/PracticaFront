@@ -20,6 +20,7 @@ import { CarRegisterComponent } from './car-register/car-register.component';
 import { RequestClientComponent } from './request-client/request-client.component';
 import { RequestCreateComponent } from './request-create/request-create.component';
 import { RequestMasterComponent } from './request-master/request-master.component';
+import { CreateServiceComponent } from './create-service/create-service.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RequestMasterComponent } from './request-master/request-master.componen
     CarRegisterComponent,
     RequestClientComponent,
     RequestCreateComponent,
-    RequestMasterComponent
+    RequestMasterComponent,
+    CreateServiceComponent,
   ],
   imports: [
     BrowserModule,

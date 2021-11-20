@@ -4,7 +4,7 @@
     </header>
   </div>
   
-  <table class="table table-striped">
+  <table *ngIf="!showPay" class="table table-striped">
     <thead  class="table-dark">
       <tr>
         <th>date</th>
@@ -14,6 +14,7 @@
         <th>service1</th>
         <th>service2</th>
         <th>service3</th>
+        <th>pay</th>
       </tr>
     </thead>
     <tbody>
@@ -24,9 +25,19 @@
         <td>{{ request.car.mark }}   {{ request.car.model }}</td>
         <td>{{ request.status.name }}</td>
         <td *ngFor="let service of request.services">{{service.name}}</td>
+        <td *ngIf="request.status.id==5">
+          <form #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(request.id)">
+              <button class="btn btn-primary">PAY</button>
+          </form>
+        </td>
       </tr>
     </tbody>
   
   <div>
     <a class="btn btn-primary" role="button"  routerLink="/createRequest" >Create request </a>
   </div>
+</table>
+
+<div *ngIf="showPay" >
+  CALL PAYMENT SERVICE
+</div>

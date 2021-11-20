@@ -10,7 +10,13 @@ export class RequestMasterComponent implements OnInit {
  
   requests: any;
 
-  content: string
+  services: any;
+
+  content: string;
+
+  isServicing = false;
+
+  id_cur_request: number;
 
   constructor(private requestService: RequestService) { }
 
@@ -24,5 +30,46 @@ export class RequestMasterComponent implements OnInit {
       }
     );
   }
+
+  
+  onSubmit(id): void{
+    this.requestService.startServiceRequest(id).subscribe(
+      data => {     
+        console.log(data);
+        this.isServicing=true;
+        this.services=data.services;
+        this.id_cur_request = id;
+      },
+      err => {
+
+      }
+    );
+  }
+
+  onFinish(): void{
+    this.requestService.finishServiceRequest(this.id_cur_request).subscribe(
+      data => {     
+        console.log(data);
+        this.isServicing=false;
+        location.reload();
+      },
+      err => {
+
+      }
+    );
+  }
+
+  onFinishID(id): void{
+    this.requestService.finishServiceRequest(id).subscribe(
+      data => {     
+        console.log(data);
+        location.reload();
+      },
+      err => {
+
+      }
+    );
+  }
+
 
 }

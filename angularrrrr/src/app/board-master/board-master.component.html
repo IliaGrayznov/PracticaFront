@@ -13,6 +13,7 @@
       <th>service2</th>
       <th>service3</th>
       <th>assept</th>
+      <th>reject</th>
     </tr>
   </thead>
   <tbody>
@@ -21,18 +22,19 @@
       <td>{{ request.car.mark }}   {{ request.car.model }}</td>
       <td *ngFor="let service of request.services">{{service.name}}</td>
       <td>
-        <form  #f="ngForm" novalidate  name="form" (ngSubmit)="f.form.valid && onSubmit()">
-          <input
-            id="id_r"
-            type="hidden"
-            name="id_r"
-            [(ngModel)]="id_r"
-            [ngValue]="request.id"
-          />
-          <div class="form-group">
+        <form #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(request.id)">
+            <div class="form-group">
             <button class="btn btn-success">Assept</button>
-          </div>
-        </form>
+            </div>
+          </form>
+      </td>
+      <td>
+        <form #f="ngForm" novalidate name="form"  (ngSubmit)="onReject(request.id)">
+            <div class="form-group">
+            <button class="btn btn-danger">Reject</button>
+            </div>
+          </form>
       </td>
     </tr>
   </tbody>
+</table>

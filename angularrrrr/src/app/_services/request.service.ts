@@ -25,9 +25,33 @@ export class RequestService {
     }, httpOptions);
   }
 
-  asseptRequest(f): Observable<any> {
+  asseptRequest(id): Observable<any> {
     return this.http.post(REQUEST_API + 'acceptRequest', {
-      id: f.id_r
+      id: id
+    }, httpOptions);
+  }
+
+  rejectRequest(id): Observable<any> {
+    return this.http.post(REQUEST_API + 'rejectRequest', {
+      id: id
+    }, httpOptions);
+  }
+
+  startServiceRequest(id): Observable<any> {
+    return this.http.post(REQUEST_API + 'startService', {
+      id: id
+    }, httpOptions);
+  }
+
+  finishServiceRequest(f): Observable<any> {
+    return this.http.post(REQUEST_API + 'finishService', {
+      id: f
+    }, httpOptions);
+  }
+
+  payService(id): Observable<any> {
+    return this.http.post(REQUEST_API + 'payService', {
+      id: id
     }, httpOptions);
   }
 
@@ -42,5 +66,9 @@ export class RequestService {
 
   getRequestsForAssept(): Observable<any> {
     return this.http.get(REQUEST_API + 'requestByStatus/2', {responseType: 'json' });
+  }
+
+  getServiceInRequests(id): Observable<any> {
+    return this.http.get(REQUEST_API + 'servicesIN/'+id, { responseType: 'json' });
   }
 }

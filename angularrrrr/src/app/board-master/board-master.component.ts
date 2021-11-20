@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../_services/request.service';
 
@@ -6,13 +7,17 @@ import { RequestService } from '../_services/request.service';
   templateUrl: './board-master.component.html',
   styleUrls: ['./board-master.component.css']
 })
+
+
 export class BoardMasterComponent implements OnInit {
+
+
 
   requests: any;
   
   content: string;
 
-  form: any = {};
+ 
 
   constructor(private requestService: RequestService) { }
 
@@ -27,10 +32,27 @@ export class BoardMasterComponent implements OnInit {
     );
   }
 
-  onSubmit(): void{
-    this.requestService.asseptRequest(this).subscribe(
+  onSubmit(id): void{
+    this.requestService.asseptRequest(id).subscribe(
       data => {
+        location.reload();
         console.log(data);
+      },
+      err => {
+
+      }
+    );
+  }
+
+  
+  onReject(id): void{
+    this.requestService.rejectRequest(id).subscribe(
+      data => {
+        location.reload();
+        console.log(data);
+      },
+      err => {
+
       }
     );
   }
