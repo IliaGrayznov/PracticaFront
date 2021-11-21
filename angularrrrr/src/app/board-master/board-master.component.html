@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let request of requests">
-      <td>{{ request.date }}</td>
+      <td>{{ request.date | date: 'dd MMM yyyy H:mm': 'UTC'}}</td>
       <td>{{ request.car.mark }}   {{ request.car.model }}</td>
       <td *ngFor="let service of request.services">{{service.name}}</td>
       <td>

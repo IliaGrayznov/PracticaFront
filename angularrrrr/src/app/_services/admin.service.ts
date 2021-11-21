@@ -19,12 +19,16 @@ export class AdminService {
     return this.http.get(API_URL + 'all', { responseType: 'json' });
   }
 
-  createService(service): Observable<any> {
+  getServicesType(): Observable<any> {
+    return this.http.get(API_URL + 'type', { responseType: 'json' });
+  }
+
+  createService(type, service): Observable<any> {
     return this.http.post(API_URL + 'create', {
       name: service.name,
       description: service.description,
       price: service.price,
-      type_id: service.type_id
+      type_id: type.type_id
     }, httpOptions);
   }
 

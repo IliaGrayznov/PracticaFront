@@ -19,14 +19,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let request of requests">
-        <td>{{ request.date }}</td>
+        <td>{{ request.date | date: 'dd MMM yyyy H:mm' : 'UTC'}}</td>
         <td *ngIf="request.master">{{ request.master.username }}</td>
         <td *ngIf="!request.master">-----</td>
         <td>{{ request.car.mark }}   {{ request.car.model }}</td>
         <td>{{ request.status.name }}</td>
         <td *ngFor="let service of request.services">{{service.name}}</td>
         <td *ngIf="request.status.id==5">
-          <form #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(request.id)">
+          <form #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(request)">
               <button class="btn btn-primary">PAY</button>
           </form>
         </td>
@@ -39,5 +39,6 @@
 </table>
 
 <div *ngIf="showPay" >
+  TOTAL: {{price}} <br>
   CALL PAYMENT SERVICE
 </div>

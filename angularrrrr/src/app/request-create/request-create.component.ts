@@ -47,7 +47,7 @@ export class RequestCreateComponent implements OnInit {
 
   
   onSubmit(): void{
-    this.requestService.create(this).subscribe(
+    this.requestService.create(this, this.form).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

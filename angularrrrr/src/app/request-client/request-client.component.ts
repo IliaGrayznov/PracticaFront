@@ -10,6 +10,8 @@ export class RequestClientComponent implements OnInit {
 
   requests: any;
 
+  price: 0;
+
   content: string
 
   showPay = false;
@@ -27,9 +29,12 @@ export class RequestClientComponent implements OnInit {
   );
   }
 
-  onSubmit(id): void{
-    this.requestService.payService(id).subscribe(
+  onSubmit(request): void{
+    this.requestService.payService(request.id).subscribe(
       data => {     
+        request.services.forEach(element => {
+          this.price+=element.price;
+        });
         console.log(data);
         this.showPay=true;
       },

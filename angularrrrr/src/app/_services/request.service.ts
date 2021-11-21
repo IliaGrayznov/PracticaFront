@@ -15,10 +15,10 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
-  create(request): Observable<any> {
+  create(request, Fdate): Observable<any> {
     return this.http.post(REQUEST_API + 'create', {
       car_id: request.car_id,
-      date: request.date,
+      date: Fdate.date,
       idS1: request.idS1,
       idS2: request.idS2,
       idS3: request.idS3
