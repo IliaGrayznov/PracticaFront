@@ -1,0 +1,25 @@
+<div class="container">
+  <header class="jumbotron">
+    <p>My cars:</p>
+  </header>
+</div>
+
+<table class="table table-striped">
+  <thead  class="table-dark">
+    <tr>
+      <th>number</th>
+      <th>mark</th>
+      <th>model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <td>{{ car.number }}</td>
+      <td>{{ car.mark }}</td>
+      <td>{{ car.model }}</td>
+    </tr>
+  </tbody>
+
+<div>
+  <a class="btn btn-primary" role="button"  routerLink="/registerCar" >Register car </a>
+</div>

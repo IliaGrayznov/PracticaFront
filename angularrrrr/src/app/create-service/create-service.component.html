@@ -1,0 +1,82 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="form.name"
+                required
+                #name="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+                <div *ngIf="name.errors.required">Name is required</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    name="description"
+                    [(ngModel)]="form.description"
+                    required
+                    #description="ngModel"
+                />
+                <div class="alert-danger" *ngIf="f.submitted && description.invalid">
+                    <div *ngIf="description.errors.required">Description is required</div>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input
+                    type="number"
+                    class="form-control"
+                    name="price"
+                    [(ngModel)]="form.price"
+                    required
+                    min="1"
+                    #price="ngModel"
+                />
+                <div class="alert-danger" *ngIf="f.submitted && price.invalid">
+                    <div *ngIf="price.errors.required">Price is required</div>
+                    <div *ngIf="price.errors.min">
+                        Price must be > 0
+                    </div>
+                  </div>
+        </div>
+
+        <div class="form-group">
+            <label for="type_id">Type</label>
+            <select id="type_id" name="type_id" class="btn btn-info dropdown-toggle"  [(ngModel)]="type_id">
+              <option *ngFor="let type of types" [ngValue]="type.id">
+                {{ type.name }}    {{ type.subType.name }} 
+              </option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Create service</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Create failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Service creation is successful!
+      </div>
+    </div>
+  </div>

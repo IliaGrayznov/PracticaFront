@@ -1,0 +1,55 @@
+<div class="container">
+    <header class="jumbotron">
+      <p *ngIf="!isServicing">My requests:</p>
+      <p *ngIf="isServicing">TO DO:</p>
+      <form *ngIf="isServicing" #f="ngForm" novalidate name="form"  (ngSubmit)="onFinish()">
+        <button class="btn btn-primary">FINISH</button>
+      </form>
+    </header>
+  </div>
+
+  <table *ngIf="!isServicing" class="table table-striped">
+    <thead  class="table-dark">
+      <tr>
+        <th>date</th>
+        <th>client</th>
+        <th>car</th>
+        <th>status</th>
+        <th>service1</th>
+        <th>service2</th>
+        <th>service3</th>
+        <th>repair</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.date | date: 'dd MMM yyyy H:mm' : 'UTC'}}</td>
+        <td>{{request.client.username}}</td>
+        <td>{{ request.car.mark }}   {{ request.car.model }}</td>
+        <td>{{ request.status.name }}</td>
+        <td *ngFor="let service of request.services">{{service.name}}</td>
+        <td *ngIf="request.status.id==3">
+          <form #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(request.id)">
+              <button class="btn btn-success">SERVICE</button>
+            </form>
+        </td>
+        <td *ngIf="request.status.id==4">
+          <form  #f="ngForm" novalidate name="form"  (ngSubmit)="onFinishID(request.id)">
+            <button class="btn btn-danger">FINISH</button>
+          </form>
+        </td>
+        
+      </tr>
+  </tbody>
+  </table>
+
+
+    <div *ngIf="isServicing" class="container">
+      <div  class="row">
+        <div *ngFor="let service of services" class="col-sm">
+          {{service.name}}
+        </div>
+      </div>
+    </div>
+
+    

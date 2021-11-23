@@ -1,0 +1,83 @@
+<div class="col-md-12">
+    <div class="card card-container">
+      <form
+        *ngIf="!isSuccessful"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="number">Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="number"
+            [(ngModel)]="form.number"
+            required
+            minlength="6"
+            maxlength="6"
+            #number="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && number.invalid">
+            <div *ngIf="number.errors.required">Number is required</div>
+            <div *ngIf="number.errors.minlength">
+                Number must be 6 characters
+            </div>
+            <div *ngIf="number.errors.maxlength">
+                Number must be 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="mark">Mark</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mark"
+            [(ngModel)]="form.mark"
+            required
+            minlength="3"
+            #mark="ngModel"
+          />
+          <div class="alert-danger" *ngIf="f.submitted && mark.invalid">
+            <div *ngIf="mark.errors.required">Mark is required</div>
+            <div *ngIf="mark.errors.minlength">
+                Mark must be at least 3 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="model">Model</label>
+            <input
+              type="text"
+              class="form-control"
+              name="model"
+              [(ngModel)]="form.model"
+              required
+              minlength="3"
+              #model="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && model.invalid">
+              <div *ngIf="model.errors.required">Model is required</div>
+              <div *ngIf="model.errors.minlength">
+                Model must be at least 3 characters
+              </div>
+            </div>
+          </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Register car</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Car registration is successful!
+      </div>
+    </div>
+  </div>

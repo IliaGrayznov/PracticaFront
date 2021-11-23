@@ -1,0 +1,62 @@
+<div class="container">
+  <header class="jumbotron">
+    <p *ngIf="!updating">ADMIN BOARD</p>
+    <p *ngIf="updating">update {{serviceFORup.name}}</p>
+    <a *ngIf="!updating" class="btn btn-primary" role="button"  routerLink="/registerMaster" >ADD master </a>
+    <a *ngIf="!updating" class="btn btn-warning" role="button"  routerLink="/createService" >ADD service </a>
+  </header>
+</div>
+
+<table *ngIf="!updating" class="table table-striped">
+  <thead  class="table-dark">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Type</th>
+      <th>SubType</th>
+      <th>update</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of services">
+      <td>{{ service.name }}</td>
+      <td>{{ service.description }}</td>
+      <td>{{ service.price }}</td>
+      <td>{{ service.type.name }}</td>
+      <td>{{ service.type.subType.name }}</td>
+      <td *ngIf="!service.deleted">
+        <form  #f="ngForm" novalidate name="form"  (ngSubmit)="showUpdate(service)">
+          <button class="btn btn-success">update</button>
+        </form>
+      </td>
+      <td *ngIf="service.deleted">
+        service deleted
+      </td>
+      <td *ngIf="!service.deleted">
+        <form  #f="ngForm" novalidate name="form"  (ngSubmit)="onSubmit(service.id)">
+          <button class="btn btn-danger">delete</button>
+        </form>
+      </td>
+      <td *ngIf="service.deleted">
+        already
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="updating">
+   <p>Current price: {{serviceFORup.price}}</p>
+   <form #f="ngForm" novalidate name="form"  (ngSubmit)="f.form.valid && onUpdate()">
+        <input
+        type="number"
+        class="form-control"
+        name="price"
+        [(ngModel)]="form.price"
+        required
+        #price="ngModel"
+      />
+       <button class="btn btn-primary">Assept</button>
+  </form>
+</div>
