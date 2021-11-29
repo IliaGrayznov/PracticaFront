@@ -8,11 +8,11 @@
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
-      <li class="nav-item" *ngIf="showMasterBoard">
-        <a href="/master" class="nav-link" routerLink="master">Master Board</a>
+      <li class="nav-item" *ngIf="showManagerBoard">
+        <a href="/manager" class="nav-link" routerLink="manager">Manager Board</a>
       </li>
-      <li class="nav-item">
-        <a href="/client" class="nav-link" *ngIf="isLoggedIn" routerLink="client">Client</a>
+      <li class="nav-item" *ngIf="showClientBoard">
+        <a href="/client" class="nav-link" routerLink="client">Client Board</a>
       </li>
     </ul>
 

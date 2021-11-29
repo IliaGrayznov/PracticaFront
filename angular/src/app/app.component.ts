@@ -10,7 +10,8 @@ export class AppComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
-  showMasterBoard = false;
+  showManagerBoard = false;
+  showClientBoard = false;
   username: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
@@ -23,7 +24,8 @@ export class AppComponent implements OnInit {
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ROLE_admin');
-      this.showMasterBoard = this.roles.includes('ROLE_master');
+      this.showManagerBoard = this.roles.includes('ROLE_manager');
+      this.showClientBoard = this.roles.includes('ROLE_client');
 
       this.username = user.username;
     }

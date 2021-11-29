@@ -1,0 +1,94 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          maxlength="100"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && name.invalid">
+          <div *ngIf="name.errors.required">Name is required</div>
+          <div *ngIf="name.errors.minlength">
+            name must be 6 characters
+          </div>
+          <div *ngIf="name.errors.maxlength">
+            name must be 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">Desc</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          [(ngModel)]="form.description"
+          required
+          minlength="3"
+          #description="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && description.invalid">
+          <div *ngIf="description.errors.required">description is required</div>
+          <div *ngIf="description.errors.minlength">
+            description must be at least 3 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount_in_warehouse">amount_in_warehouse</label>
+        <input
+          type="number"
+          class="form-control"
+          name="amount_in_warehouse"
+          [(ngModel)]="form.amount_in_warehouse"
+          required
+          #amount_in_warehouse="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && amount_in_warehouse.invalid">
+          <div *ngIf="amount_in_warehouse.errors.required">amount_in_warehouse is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">price</label>
+        <input
+          type="number"
+          class="form-control"
+          name="price"
+          [(ngModel)]="form.price"
+          required
+          #price="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && price.invalid">
+          <div *ngIf="price.errors.required">price is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Create product</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
+        Create failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Product creation is successful!
+    </div>
+  </div>
+</div>

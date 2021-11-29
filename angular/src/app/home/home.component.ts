@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,18 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
 
+  products: any;
   content: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
+    this.productService.getProducts().subscribe(
       data => {
-        this.content = data;
+        this.products = data.products;
+        console.log(data);
+        console.log(this.products);
+        console.log(data.products);
       },
       err => {
         this.content = JSON.parse(err.error).message;
