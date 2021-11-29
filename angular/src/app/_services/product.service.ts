@@ -29,4 +29,10 @@ export class ProductService {
       price: product.price
     }, httpOptions);
   }
+
+  addProductToCart(product): Observable<any> {
+    return this.http.post('http://localhost:8080/api/client/order/add', {
+      id: product.id
+    }, httpOptions);
+  }
 }

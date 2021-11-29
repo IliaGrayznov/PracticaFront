@@ -10,6 +10,9 @@ export class HomeComponent implements OnInit {
 
   products: any;
   content: string;
+  isSuccessful = false;
+  isFailed = false;
+  errorMessage = '';
 
   constructor(private productService: ProductService) { }
 
@@ -26,5 +29,17 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+  /*onClickBuy(): void{
+    this.productService.addProductToCart(this.form).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isFailed = true;
+      }
+    );
+  }*/
 }

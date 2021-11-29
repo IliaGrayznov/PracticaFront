@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
       this.showAdminBoard = this.roles.includes('ROLE_admin');
       this.showManagerBoard = this.roles.includes('ROLE_manager');
       this.showClientBoard = this.roles.includes('ROLE_client');
-
       this.username = user.username;
     }
   }
