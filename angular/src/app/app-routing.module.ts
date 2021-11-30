@@ -9,6 +9,7 @@ import { BoardClientComponent } from './board-client/board-client.component';
 import { BoardMasterComponent } from './board-master/board-master.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { CreateProductComponent} from './create-product/create-product.component';
+import { CartComponent} from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'master', component: BoardMasterComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'productform', component: CreateProductComponent },
+  { path: 'cart', component: CartComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../_services/product.service';
+import { OrderService } from '../_services/order.service';
+import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -13,26 +15,26 @@ export class HomeComponent implements OnInit {
   isSuccessful = false;
   isFailed = false;
   errorMessage = '';
+  isLoggedIn = false;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,
+              private tokenStorageService: TokenStorageService,
+              private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.productService.getProducts().subscribe(
       data => {
         this.products = data.products;
-        console.log(data);
-        console.log(this.products);
-        console.log(data.products);
       },
       err => {
         this.content = JSON.parse(err.error).message;
       }
     );
   }
-  /*onClickBuy(): void{
-    this.productService.addProductToCart(this.form).subscribe(
+  onClickBuy(id): void{
+    this.orderService.addProductToCart(id).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isFailed = false;
       },
@@ -41,5 +43,5 @@ export class HomeComponent implements OnInit {
         this.isFailed = true;
       }
     );
-  }*/
+  }
 }

@@ -14,12 +14,22 @@ export class CreateProductComponent implements OnInit {
   isSuccessful = false;
   isFailed = false;
   errorMessage = '';
+  categories: any;
+  content: string;
 
   ngOnInit(): void {
+    this.productService.getCategories().subscribe(
+      data => {
+        this.categories = data.categories;
+      },
+      err => {
+        this.content = JSON.parse(err.error).message;
+      }
+    );
   }
 
   onSubmit(): void{
-    this.productService.createProduct(this.form).subscribe(
+    this.productService.createProduct(this.form, this).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

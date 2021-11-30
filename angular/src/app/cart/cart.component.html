@@ -1,0 +1,23 @@
+<h3>Корзина:</h3>
+<div *ngFor="let product of products" class="product-container">
+
+  <div class="product-img-container">
+
+    <div class="product-img">{{ product.img }}</div>
+
+  </div>
+  <div class="product">
+
+    <div class="product-name">
+      <b>{{ product.name }}</b>
+    </div>
+    <div class="product-desc">
+      {{ product.description }}
+    </div>
+    <div class="product-price">
+      <p>{{ product.price }} ₽</p>
+    </div>
+
+  </div>
+
+</div>

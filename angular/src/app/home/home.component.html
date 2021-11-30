@@ -42,9 +42,12 @@
     <div class="product-price">
       <p>{{ product.price }} ₽</p>
     </div>
-    <div class="product-btn-buy">
-      <a onClick="" role="button">КУПИТЬ</a>
+    <div class="product-btn-buy" *ngIf="isLoggedIn">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickBuy(product.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">КУПИТЬ</button>
+        </div>
+      </form>
     </div>
-
   </div>
 </div>

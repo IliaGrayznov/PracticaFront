@@ -16,6 +16,7 @@ import { BoardClientComponent } from './board-client/board-client.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CreateProductComponent } from './create-product/create-product.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CreateProductComponent } from './create-product/create-product.componen
     BoardAdminComponent,
     BoardMasterComponent,
     BoardClientComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

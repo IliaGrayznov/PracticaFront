@@ -19,20 +19,18 @@ export class ProductService {
     return this.http.get(API_URL + 'products', { responseType: 'json' });
   }
 
-  createProduct(product): Observable<any> {
+  getCategories(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/client/categories', { responseType: 'json' });
+  }
+
+  createProduct(product, category): Observable<any> {
     return this.http.post(API_URL + 'create', {
       amount_in_warehouse: product.amount_in_warehouse,
-      category_id: 1,
+      category_id: category.category_id,
       description: product.description,
       img: 'none',
       name: product.name,
       price: product.price
-    }, httpOptions);
-  }
-
-  addProductToCart(product): Observable<any> {
-    return this.http.post('http://localhost:8080/api/client/order/add', {
-      id: product.id
     }, httpOptions);
   }
 }
