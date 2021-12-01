@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 const API_URL = 'http://localhost:8080/api/product/';
@@ -20,7 +20,16 @@ export class OrderService {
       product_id: id
     }, httpOptions);
   }
+
+  deleteProductFromCart(id): Observable<any> {
+    return this.http.post('http://localhost:8080/api/client/order/delete', {
+      product_id: id
+    }, httpOptions);
+  }
   showCart(): Observable<any> {
     return this.http.get('http://localhost:8080/api/client/order/show', { responseType: 'json' });
+  }
+  showAmountCart(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/client/order/amount', { responseType: 'json' });
   }
 }

@@ -3,19 +3,38 @@
 
   <div class="product-img-container">
 
-    <div class="product-img">{{ product.img }}</div>
+    <div class="product-img">{{ product.product.img }}</div>
 
   </div>
   <div class="product">
 
     <div class="product-name">
-      <b>{{ product.name }}</b>
+      <b>{{ product.product.name }}</b>
     </div>
     <div class="product-desc">
-      {{ product.description }}
+      {{ product.product.description }}
     </div>
     <div class="product-price">
-      <p>{{ product.price }} ₽</p>
+      <p>{{ product.product.price }} ₽</p>
+    </div>
+    <div class="product-btn-cart">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickDelete(product.product.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">-</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="product-btn-cart">
+      <p>{{ product.amount }}</p>
+    </div>
+
+    <div class="product-btn-cart">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickAdd(product.product.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">+</button>
+        </div>
+      </form>
     </div>
 
   </div>

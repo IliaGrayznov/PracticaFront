@@ -28,3 +28,10 @@
   text-align: right;
   float: left;
 }
+.product-btn-buy {
+  text-align: right;
+}
+.product-btn-cart {
+  text-align: right;
+  display: table-cell;
+}
