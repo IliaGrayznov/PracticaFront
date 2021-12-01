@@ -15,8 +15,11 @@ import {BoardManagerComponent} from './board-manager/board-manager.component';
 import {BoardClientComponent} from './board-client/board-client.component';
 
 import {authInterceptorProviders} from './_helpers/auth.interceptor';
-import {CreateProductComponent} from './create-product/create-product.component';
-import {CartComponent} from './cart/cart.component';
+import {CreateProductComponent} from './board-manager/products/create-product/create-product.component';
+import {CartComponent} from './board-client/cart/cart.component';
+import {OrdersComponent} from './board-manager/orders/orders.component';
+import {ProductsComponent} from './board-manager/products/products.component';
+import {ChangeProductComponent} from './board-manager/products/change-product/change-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {CartComponent} from './cart/cart.component';
     BoardManagerComponent,
     BoardClientComponent,
     CreateProductComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent,
+    ProductsComponent,
+    ChangeProductComponent
   ],
   imports: [
     BrowserModule,

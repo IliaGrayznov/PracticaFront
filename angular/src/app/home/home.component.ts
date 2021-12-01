@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   content: string;
   isSuccessful = false;
   isFailed = false;
-  errorMessage = '';
   isLoggedIn = false;
   roles: any;
   showClient: boolean;
@@ -35,19 +34,17 @@ export class HomeComponent implements OnInit {
         this.products = data.products;
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        console.log(err.error.message);
       }
     );
   }
   onClickBuy(id): void{
     this.orderService.addProductToCart(id).subscribe(
       data => {
-        this.isSuccessful = true;
-        this.isFailed = false;
+        console.log(data.message);
       },
       err => {
-        this.errorMessage = err.error.message;
-        this.isFailed = true;
+        console.log(err.error.message);
       }
     );
     window.location.reload();

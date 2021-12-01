@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {OrderService} from '../_services/order.service';
+import {OrderService} from '../../_services/order.service';
 import {Router} from '@angular/router';
+import {DataService} from '../../_services/data/data.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,17 +12,18 @@ export class CartComponent implements OnInit {
 
   products: any;
   content: string;
-  errorMessage = '';
   amount: number;
 
   constructor(private orderService: OrderService,
-              private router: Router) { }
+              private router: Router,
+              private dataService: DataService) { }
 
   ngOnInit(): void {
     this.orderService.showAmountCart().subscribe( //
       data => {
         this.amount = data.amount;
         if (data.amount === 0) {
+          this.dataService.update(1); // FIXME
           this.router.navigate(['/']);
         }
       },
@@ -43,6 +45,7 @@ export class CartComponent implements OnInit {
     this.orderService.addProductToCart(id).subscribe(
       data => {
         this.ngOnInit();
+        console.log(data.message);
       },
       err => {
         console.log(err.error.message);
@@ -54,6 +57,7 @@ export class CartComponent implements OnInit {
     this.orderService.deleteProductFromCart(id).subscribe(
       data => {
         this.ngOnInit();
+        console.log(data.message);
       },
       err => {
         console.log(err.error.message);
@@ -64,6 +68,7 @@ export class CartComponent implements OnInit {
     this.orderService.confirm().subscribe(
       data => {
         this.ngOnInit();
+        console.log(data.message);
       },
       err => {
         console.log(err.error.message);

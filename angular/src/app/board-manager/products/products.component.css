@@ -1,0 +1,33 @@
+.product-container {
+  width: 802px;
+  margin: 20px auto 20px auto;
+  border: 1px solid #AAA;
+  display: table;
+}
+.product-img-container {
+  display: table-cell;
+  height: 200px;
+  width: 270px;
+}
+.product {
+  width: 500px;
+  height: 200px;
+  margin-bottom: 15px;
+}
+.product-img {
+  background-color: #ffcc00;
+  margin: 15px;
+  height: 200px;
+  text-align: center;
+}
+.product-name {
+  width: 400px;
+}
+.product-desc {
+}
+.product-price {
+  display: table-cell;
+}
+.product-btn-buy {
+  display: inline-block;
+}

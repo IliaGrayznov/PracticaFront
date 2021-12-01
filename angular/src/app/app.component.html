@@ -5,16 +5,16 @@
       <!--<li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
       </li>-->
-      <li class="nav-item" *ngIf="showAdmin">
+      <li class="nav-item" *ngIf="isAdminUser">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
-      <li class="nav-item" *ngIf="showManagerBoard">
+      <li class="nav-item" *ngIf="isManagerUser">
         <a href="/manager" class="nav-link" routerLink="manager">Manager Board</a>
       </li>
-      <li class="nav-item" *ngIf="showClientBoard">
+      <li class="nav-item" *ngIf="isClientUser">
         <a href="/orders" class="nav-link" routerLink="orders">Заказы</a>
       </li>
-      <li class="nav-item" *ngIf="showClientBoard">
+      <li class="nav-item" *ngIf="isClientUser">
         <a href="/cart" class="nav-link" routerLink="cart" *ngIf="amountCart>0">Корзина({{amountCart}})</a>
       </li>
     </ul>

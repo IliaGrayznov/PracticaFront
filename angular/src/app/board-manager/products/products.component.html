@@ -1,0 +1,40 @@
+<a class="btn btn-danger" href="/manager/products/create" routerLink="/manager/products/create">
+  Добавить новый продукт
+</a>
+<div *ngFor="let product of products" class="product-container">
+  <div class="product-img-container">
+    <div class="product-img">{{ product.img }}</div>
+  </div>
+  <div class="product">
+
+    <div class="product-name">
+      <b>{{ product.name }}</b>
+    </div>
+    <div class="product-desc">
+      {{ product.description }}
+    </div>
+    <div class="product-price">
+      <p>{{ product.price }} ₽</p>
+    </div>
+
+    <br>
+
+    <div class="product-price">
+      <p>{{ product.amount_in_warehouse }} шт.</p>
+    </div>
+    <div class="product-btn-buy">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickChange(product.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">ИЗМЕНИТЬ</button>
+        </div>
+      </form>
+    </div>
+    <div class="product-btn-buy">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickDelete(product.id)"> <!--FIXME-->
+        <div class="form-group">
+          <button class="btn btn-danger">УДАЛИТЬ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

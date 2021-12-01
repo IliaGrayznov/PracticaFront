@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ProductService} from '../_services/product.service';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../../../_services/product.service';
 
 @Component({
   selector: 'app-create-product',
@@ -23,7 +23,7 @@ export class CreateProductComponent implements OnInit {
         this.categories = data.categories;
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        console.log(err);
       }
     );
   }

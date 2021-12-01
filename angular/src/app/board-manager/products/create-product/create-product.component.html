@@ -8,7 +8,7 @@
       novalidate
     >
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Имя товара</label>
         <input
           type="text"
           class="form-control"
@@ -16,34 +16,34 @@
           [(ngModel)]="form.name"
           required
           minlength="3"
-          maxlength="100"
+          maxlength="300"
           #name="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && name.invalid">
-          <div *ngIf="name.errors.required">Name is required</div>
+          <div *ngIf="name.errors.required">Поле "имя товара" обязательно для заполнения</div>
           <div *ngIf="name.errors.minlength">
-            name must be 6 characters
+            Имя товара должно быть меньше 300 символов
           </div>
           <div *ngIf="name.errors.maxlength">
-            name must be 6 characters
+            Имя товара должно состоять как минимум из 3 символов
           </div>
         </div>
       </div>
       <div class="form-group">
-        <label for="description">Desc</label>
+        <label for="description">Описание товара</label>
         <input
           type="text"
           class="form-control"
           name="description"
           [(ngModel)]="form.description"
           required
-          minlength="3"
+          minlength="30"
           #description="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && description.invalid">
-          <div *ngIf="description.errors.required">description is required</div>
+          <div *ngIf="description.errors.required">Поле "описание" обязательно для заполнения</div>
           <div *ngIf="description.errors.minlength">
-            description must be at least 3 characters
+            Описание товара должно состоять как минимум из 30 символов
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
           #amount_in_warehouse="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && amount_in_warehouse.invalid">
-          <div *ngIf="amount_in_warehouse.errors.required">amount_in_warehouse is required</div>
+          <div *ngIf="amount_in_warehouse.errors.required">Поле "количество товара" обязательно для заполнения</div>
         </div>
       </div>
 
@@ -73,7 +73,7 @@
       </div>
 
       <div class="form-group">
-        <label for="price">price</label>
+        <label for="price">Цена</label>
         <input
           type="number"
           class="form-control"
@@ -83,21 +83,21 @@
           #price="ngModel"
         />
         <div class="alert-danger" *ngIf="f.submitted && price.invalid">
-          <div *ngIf="price.errors.required">price is required</div>
+          <div *ngIf="price.errors.required">Поле "цена" обязательно для заполнения</div>
         </div>
       </div>
 
       <div class="form-group">
-        <button class="btn btn-primary btn-block">Create product</button>
+        <button class="btn btn-primary btn-block">Создать продукт</button>
       </div>
 
       <div class="alert alert-warning" *ngIf="f.submitted && isFailed">
-        Create failed!<br />{{ errorMessage }}
+        Создание не удалось!<br />{{ errorMessage }}
       </div>
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Product creation is successful!
+      Продукт успешно добавлен в каталог!
     </div>
   </div>
 </div>
