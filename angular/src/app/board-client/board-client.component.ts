@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {OrderService} from '../_services/order.service';
 
 @Component({
   selector: 'app-board-client',
@@ -9,13 +9,15 @@ import { UserService } from '../_services/user.service';
 export class BoardClientComponent implements OnInit {
 
   content: string;
+  orders: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.userService.getClientBoard().subscribe(
+    this.orderService.showOrders().subscribe( //
       data => {
-        this.content = data;
+        console.log(data);
+        this.orders = data.orders;
       },
       err => {
         this.content = JSON.parse(err.error).message;

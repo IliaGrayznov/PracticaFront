@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-board-master',
-  templateUrl: './board-master.component.html',
-  styleUrls: ['./board-master.component.css']
+  templateUrl: './board-manager.component.html',
+  styleUrls: ['./board-manager.component.css']
 })
-export class BoardMasterComponent implements OnInit {
+export class BoardManagerComponent implements OnInit {
 
   content: string;
 

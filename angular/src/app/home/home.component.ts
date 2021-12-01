@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../_services/product.service';
-import { OrderService } from '../_services/order.service';
+import {Component, OnInit} from '@angular/core';
+import {ProductService} from '../_services/product.service';
+import {OrderService} from '../_services/order.service';
 import {TokenStorageService} from '../_services/token-storage.service';
 
 @Component({
@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   isFailed = false;
   errorMessage = '';
   isLoggedIn = false;
+  roles: any;
+  showClient: boolean;
 
   constructor(private productService: ProductService,
               private tokenStorageService: TokenStorageService,
@@ -23,6 +25,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.showClient = this.roles.includes('ROLE_client');
+    }
     this.productService.getProducts().subscribe(
       data => {
         this.products = data.products;
@@ -43,5 +50,6 @@ export class HomeComponent implements OnInit {
         this.isFailed = true;
       }
     );
+    window.location.reload();
   }
 }

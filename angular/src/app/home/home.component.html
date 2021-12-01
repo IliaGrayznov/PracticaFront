@@ -13,7 +13,7 @@
     <div class="product-price">
       <p>{{ product.price }} ₽</p>
     </div>
-    <div class="product-btn-buy" *ngIf="isLoggedIn">
+    <div class="product-btn-buy" *ngIf="showClient">
       <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickBuy(product.id)">
         <div class="form-group">
           <button class="btn btn-danger">КУПИТЬ</button>

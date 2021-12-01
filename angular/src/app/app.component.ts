@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from './_services/token-storage.service';
+import {Component, OnInit} from '@angular/core';
+import {TokenStorageService} from './_services/token-storage.service';
 import {OrderService} from './_services/order.service';
 
 @Component({
@@ -31,18 +31,17 @@ export class AppComponent implements OnInit {
       this.showManagerBoard = this.roles.includes('ROLE_manager');
       this.showClientBoard = this.roles.includes('ROLE_client');
       this.username = user.username;
-    }
-
-    this.orderService.showAmountCart().subscribe(
-      data => {
-        if (data.amount !== 0) {
-          this.amountCart = data.amount;
+      this.orderService.showAmountCart().subscribe(
+        data => {
+          if (data.amount !== 0) {
+            this.amountCart = data.amount;
+          }
+        },
+        err => {
+          this.content = JSON.parse(err.error).message;
         }
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+      );
+    }
   }
 
   logout(): void {
