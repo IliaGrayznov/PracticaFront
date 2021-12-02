@@ -23,7 +23,7 @@ export class CreateProductComponent implements OnInit {
         this.categories = data.categories;
       },
       err => {
-        console.log(err);
+        console.log(err.error.message);
       }
     );
   }

@@ -14,13 +14,13 @@ export class BoardClientComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.orderService.showOrders().subscribe( //
+    this.orderService.showOrders().subscribe(
       data => {
         console.log(data);
         this.orders = data.orders;
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        console.log(err.error);
       }
     );
   }

@@ -40,12 +40,12 @@ export class ChangeProductComponent implements OnInit, OnDestroy {
     this.form.id = this.idFromProducts;
     this.productService.changeProduct(this.form, this).subscribe(
       data => {
-        console.log(data);
+        console.log(data.message.message);
         this.isSuccessful = true;
         this.isFailed = false;
       },
       err => {
-        console.log(err);
+        console.log(err.error.message);
         this.isFailed = true;
       }
     );

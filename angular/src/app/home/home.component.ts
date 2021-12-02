@@ -12,8 +12,6 @@ export class HomeComponent implements OnInit {
 
   products: any;
   content: string;
-  isSuccessful = false;
-  isFailed = false;
   isLoggedIn = false;
   roles: any;
   showClient: boolean;
@@ -41,7 +39,7 @@ export class HomeComponent implements OnInit {
   onClickBuy(id): void{
     this.orderService.addProductToCart(id).subscribe(
       data => {
-        console.log(data.message);
+        console.log(data.message.message);
       },
       err => {
         console.log(err.error.message);

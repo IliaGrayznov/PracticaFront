@@ -32,4 +32,16 @@ export class ProductsComponent implements OnInit {
     this.dataService.idToChangeProduct(productId);
   }
 
+  public onClickDelete(productId): void {
+    this.productService.deleteProduct(productId).subscribe(
+      data => {
+        this.ngOnInit();
+        console.log(data.message.message);
+      },
+      err => {
+        console.log(err.error.message);
+      }
+    );
+  }
+
 }

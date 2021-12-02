@@ -1,1 +1,45 @@
-<p>orders works!</p>
+<h3>Заказы, ожидающие подтверждения:</h3>
+<div *ngFor="let order of orderedOrders" class="product-container">
+  <div *ngIf="order.orderStatus.name == 'ordered'">
+    <div class="">
+      ID заказа: {{ order.id }}
+    </div>
+    <div class="">
+      Статус заказа: {{ order.orderStatus.name }}
+    </div>
+    <div class="">
+      Клиент: {{ order.user.username }}
+    </div>
+    <div class="product-btn-buy">
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickConfirmOrder(order.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">ПОДТВЕРДИТЬ</button>
+        </div>
+      </form>
+      <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickDeleteOrder(order.id)">
+        <div class="form-group">
+          <button class="btn btn-danger">УДАЛИТЬ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<h3>Оформленные заказы:</h3>
+<div *ngFor="let order of confirmedOrders" class="product-container">
+  <div>
+    <div class="">
+      Номер заказа: {{ order.id }}
+    </div>
+    <div class="">
+      Статус заказа: {{ order.orderStatus.name }}
+    </div>
+    <div class="">
+      Клиент: {{ order.user.username }}
+    </div>
+    <form #f="ngForm" novalidate name="form"  (ngSubmit)="onClickCloseOrder(order.id)">
+      <div class="form-group">
+        <button class="btn btn-danger">ЗАКРЫТЬ</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -49,4 +49,10 @@ export class ProductService {
       price: product.price
     }, httpOptions);
   }
+
+  deleteProduct(productId): Observable<any> {
+    return this.http.post(API_URL + 'delete', {
+      product_id: productId
+    }, httpOptions);
+  }
 }

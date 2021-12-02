@@ -34,6 +34,28 @@ export class OrderService {
     return this.http.get('http://localhost:8080/api/client/order/confirm', { responseType: 'json' });
   }
   showOrders(): Observable<any> {
-    return  this.http.get('http://localhost:8080/api/client/orders', { responseType: 'json' });
+    return this.http.get('http://localhost:8080/api/client/orders', { responseType: 'json' });
   }
+  showOrderedOrders(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/manager/show/ordered', { responseType: 'json' });
+  }
+  showConfirmedOrders(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/manager/show/confirmed', { responseType: 'json' });
+  }
+  confirmOrder(orderId): Observable<any> {
+    return this.http.post('http://localhost:8080/api/manager/order/confirm', {
+      order_id: orderId
+    }, httpOptions);
+  }
+  deleteOrder(orderId): Observable<any> {
+    return this.http.post('http://localhost:8080/api/manager/order/delete', {
+      order_id: orderId
+    }, httpOptions);
+  }
+  closeOrder(orderId): Observable<any> {
+    return this.http.post('http://localhost:8080/api/manager/order/close', {
+      order_id: orderId
+    }, httpOptions);
+  }
+
 }

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BoardClientComponent } from './board-client.component';
+import {BoardClientComponent} from './board-client.component';
 
 describe('BoardClientComponent', () => {
   let component: BoardClientComponent;
